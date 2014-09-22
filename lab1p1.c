@@ -4,7 +4,6 @@
 // ECE 372
 // Lab1.P1
 
->>>>>>> 8b6e7ec137d1fa48346a0e018269093ce251947b
 // ******************************************************************************************* //
 // Include file for PIC24FJ64GA002 microcontroller. This include file defines
 // MACROS for special function registers (SFR) and control bits within those
