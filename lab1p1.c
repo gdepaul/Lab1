@@ -1,4 +1,7 @@
-// Chris Carry Wants to Edit
+// ******************************************************************************************* //
+// Greg DePaul & Chris Carry
+// ECE 372
+// Lab1.P1
 
 // ******************************************************************************************* //
 // Include file for PIC24FJ64GA002 microcontroller. This include file defines
