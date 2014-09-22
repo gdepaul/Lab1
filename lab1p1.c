@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-// Chris Carry Wants to Edit
-// blah blah blah
-=======
+
 // ******************************************************************************************* //
 // Greg DePaul & Chris Carry
 // ECE 372
