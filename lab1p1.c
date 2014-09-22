@@ -41,18 +41,28 @@ int main(void)
 
 	// TODO: Configure AD1PCFG register for configuring input pins between analog input
 	// and digital IO.
+        //AD1PCFGbits.PCFG4 = 1;
+        //AD1PCFGbits.PCFG1 = 0;
 
 	// TODO: Configure TRIS register bits for Right and Left LED outputs.
+        TRISAbits.TRISA0 = 0;
+        TRISAbits.TRISA1 = 0;
 
 	// TODO: Configure LAT register bits to initialize Right LED to on.
+        LATAbits.LATA0 = 0;
+        LATAbits.LATA1 = 1;
 
 	// TODO: Configure ODC register bits to use open drain configuration for Right
 	// and Left LED output.
+        ODCAbits.ODA0 = 1; //I01 Output
+        ODCAbits.ODA1 = 1; //IO2 Output
 
 	// TODO: Configure TRIS register bits for swtich input.
+        //TRISBbits.TRISB2 = 1;
 
 	// TODO: Configure CNPU register bits to enable internal pullup resistor for switch
 	// input.
+        //CNPU1bits.CN6PUE = 0; //IO5 Input
 
 	// TODO: Setup Timer 1 to use internal clock (Fosc/2).
 
