@@ -28,7 +28,7 @@
 
 // ******************************************************************************************* //
 
-// TODO: This function will use a 16-bit timer (Timer 2) to wait for approximately 0 to the 16000 us
+// This function will use a 16-bit timer (Timer 2) to wait for approximately 0 to the 16000 us
 // specfied by the input usDelay.
 //
 // Function Inputs:
@@ -36,16 +36,28 @@
 
 void DelayUs(unsigned int usDelay) {
 
-	// TODO: Use Timer 2 to delay for precisely (as precise as possible) usDelay
-	// microseconds provided by the input variable.
-	//
-	// Hint: Determine the configuration for the PR1 setting that provides for a
+	// Setup Timer 2's prescaler to 1:256.
+        T2CONbits.TCKPS0 = 1;
+        T2CONbits.TCKPS1 = 1;
+
+	// Clear Timer 2 value and reset interrupt flag
+        TMR2 = 0;
+
+	// Set Timer 2's period value register to value for 5 ms.
+	// Hint: Determine the configuration for the PR2 setting that provides for a
 	// one microsecond delay, and multiply this by the input variable.
 	// Be sure to user integer values only.
-/**********************************************/
+        PR2 = 57*usDelay;
+        
+        // Start Timer
+        T2CON = 0x8030;
 
+        // Wait for the Timer to finish
+        while(TMR2 < PR2);
 
-/*****************************************************/
+        // Stop the Counting
+        T2CONbits.TON = 0;
+
 }
 
 // ******************************************************************************************* //
@@ -103,10 +115,24 @@ void WriteLCD(unsigned char word, unsigned commandType, unsigned usDelay) {
 void LCDInitialize(void) {
 
 	// Setup D, RS, and E to be outputs (0).
+        LCD_TRIS_D7 = 0;
+        LCD_TRIS_D6 = 0;
+        LCD_TRIS_D5 = 0;
+        LCD_TRIS_D4 = 0;
+        LCD_TRIS_RS = 0;
+        LCD_TRIS_E = 0;
 
 	// Initilization sequence utilizes specific LCD commands before the general configuration
 	// commands can be utilized. The first few initilition commands cannot be done using the
 	// WriteLCD function. Additionally, the specific sequence and timing is very important.
+        LCD_D = (LCD_D & 0x0FFF) | 0x0000;
+        LCD_RS = 0;
+	LCD_E = 0;
+	DelayUs(15000);
+
+	LCD_D = (LCD_D & 0x0FFF) | 0x3000;
+	EnableLCD(LCD_WRITE_CONTROL, 4100);
+
 
 	// Enable 4-bit interface
 
