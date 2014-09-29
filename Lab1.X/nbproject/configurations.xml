@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+<<<<<<< HEAD
+      <itemPath>../lcd.h</itemPath>
+=======
+>>>>>>> 25b3f3e7bd0df5a3ae12d64a0c0c92c31276a422
       <itemPath>../p24fj64ga002.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -14,6 +18,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>../lab1p1.c</itemPath>
+      <itemPath>../lab1p2.c</itemPath>
+      <itemPath>../lcd.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -34,7 +40,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.21</languageToolchainVersion>
+        <languageToolchainVersion>1.22</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
