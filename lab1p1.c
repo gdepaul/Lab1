@@ -35,6 +35,13 @@ _CONFIG1( JTAGEN_OFF & GCP_OFF & GWRP_OFF &
 _CONFIG2( IESO_OFF & SOSCSEL_SOSC & WUTSEL_LEG & FNOSC_PRIPLL & FCKSM_CSDCMD & OSCIOFNC_OFF &
           IOL1WAY_OFF & I2C1SEL_PRI & POSCMOD_XT )
 
+// ******************************************************************************************* //
+// Function Definitions
+
+void DebounceDelay();
+
+// ******************************************************************************************* //
+
 int main(void)
 {
 	// ****************************************************************************** //
@@ -81,13 +88,30 @@ int main(void)
 
 	while(1)
 	{
-		// TODO: For each distinct button press, alternate which
+		// For each distinct button press, alternate which
 		// LED is illuminated (on).
+                if( PORTBbits.RB2 == 0 ) {
+                    LATAbits.LATA0 ^= LATAbits.LATA0;
+                    LATAbits.LATA1 ^= LATAbits.LATA1;
+                }
 
-		// TODO: Use DebounceDelay() function to debounce button press
+		// Use DebounceDelay() function to debounce button press
 		// and button release in software.
+                DebounceDelay();
+
 	}
 	return 0;
 }
 
-// *******************************************************************************************
+// ******************************************************************************************* //
+
+void DebounceDelay() {
+
+    T1CONbits.TON = 1;
+    while(TMR1 < PR1);
+    T1CONbits.TON = 0;
+    TMR1 = 0;
+
+}
+
+// ******************************************************************************************* //
