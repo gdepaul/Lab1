@@ -39,41 +39,45 @@ int main(void)
 {
 	// ****************************************************************************** //
 
-	// TODO: Configure AD1PCFG register for configuring input pins between analog input
+	// Configure AD1PCFG register for configuring input pins between analog input
 	// and digital IO.
-        //AD1PCFGbits.PCFG4 = 1;
-        //AD1PCFGbits.PCFG1 = 0;
+        AD1PCFGbits.PCFG4 = 1;
 
-	// TODO: Configure TRIS register bits for Right and Left LED outputs.
+	// Configure TRIS register bits for Right and Left LED outputs.
         TRISAbits.TRISA0 = 0;
         TRISAbits.TRISA1 = 0;
 
-	// TODO: Configure LAT register bits to initialize Right LED to on.
+	// Configure LAT register bits to initialize Right LED to on.
         LATAbits.LATA0 = 0;
         LATAbits.LATA1 = 1;
 
-	// TODO: Configure ODC register bits to use open drain configuration for Right
+	// Configure ODC register bits to use open drain configuration for Right
 	// and Left LED output.
         ODCAbits.ODA0 = 1; //I01 Output
         ODCAbits.ODA1 = 1; //IO2 Output
 
-	// TODO: Configure TRIS register bits for swtich input.
-        //TRISBbits.TRISB2 = 1;
+	// Configure TRIS register bits for swtich input.
+        TRISBbits.TRISB2 = 1;
 
-	// TODO: Configure CNPU register bits to enable internal pullup resistor for switch
+	// Configure CNPU register bits to enable internal pullup resistor for switch
 	// input.
-        //CNPU1bits.CN6PUE = 0; //IO5 Input
+        CNPU1bits.CN6PUE = 1; //IO5 Input
 
-	// TODO: Setup Timer 1 to use internal clock (Fosc/2).
-        //TMR1 = 0;
+	// Setup Timer 1 to use internal clock (Fosc/2).
+        T1CONbits.TCS = 0;
 
-	// TODO: Setup Timer 1's prescaler to 1:256.
+	// Setup Timer 1's prescaler to 1:256.
+        T1CONbits.TCKPS0 = 1;
+        T1CONbits.TCKPS1 = 1;
 
- 	// TODO: Set Timer 1 to be initially off.
+ 	// Set Timer 1 to be initially off.
+        T1CONbits.TON = 0;
 
-	// TODO: Clear Timer 1 value and reset interrupt flag
+	// Clear Timer 1 value and reset interrupt flag
+        TMR1 = 0;
 
-	// TODO: Set Timer 1's period value register to value for 5 ms.
+	// Set Timer 1's period value register to value for 5 ms.
+        PR1 = 287;
 
 	while(1)
 	{
