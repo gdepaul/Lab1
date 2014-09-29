@@ -130,11 +130,9 @@ void LCDInitialize(void) {
 	LCD_E = 0;
 	DelayUs(15000);
 
-	LCD_D = (LCD_D & 0x0FFF) | 0x3000;
-	EnableLCD(LCD_WRITE_CONTROL, 4100);
-
-
 	// Enable 4-bit interface
+        LCD_D = (LCD_D & 0x0FFF) | 0x3000;
+	EnableLCD(LCD_WRITE_CONTROL, 4100);
 
 	// Function Set (specifies data width, lines, and font.
 
