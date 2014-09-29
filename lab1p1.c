@@ -1,6 +1,8 @@
 
 // ******************************************************************************************* //
-// Greg DePaul & Chris Carry
+// Greg DePaul
+// Chris Carry
+// Vincent Ippolito
 // ECE 372
 // Lab1.P1
 
@@ -105,6 +107,7 @@ int main(void)
 
 // ******************************************************************************************* //
 
+// Wait exactly 5ms before returning to the while loop
 void DebounceDelay() {
 
     T1CONbits.TON = 1;
