@@ -133,11 +133,12 @@ void LCDInitialize(void) {
 	LCD_D = (LCD_D & 0x0FFF) | 0x3000;
 	EnableLCD(LCD_WRITE_CONTROL, 4100);
 
-
+        LCD_D = (LCD_D & 0x0FFF) | 0x3000;
+	EnableLCD(LCD_WRITE_CONTROL, 100);
 	// Enable 4-bit interface
-
+        WriteLCD(0x32, LCD_WRITE_CONTROL,100);
 	// Function Set (specifies data width, lines, and font.
-
+        WriteLCD(0x28, LCD_WRITE_CONTROL,40);
 	// 4-bit mode initialization is complete. We can now configure the various LCD
 	// options to control how the LCD will function.
 
