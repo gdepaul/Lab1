@@ -65,6 +65,7 @@ int main(void)
         //CNPU1bits.CN6PUE = 0; //IO5 Input
 
 	// TODO: Setup Timer 1 to use internal clock (Fosc/2).
+        //TMR1 = 0;
 
 	// TODO: Setup Timer 1's prescaler to 1:256.
 
